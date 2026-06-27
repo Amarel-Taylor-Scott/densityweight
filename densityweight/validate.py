@@ -101,7 +101,7 @@ def held_out(X, y, *, low_frac=0.6, k=15, n_null=200, lam=1.0, seed=0) -> dict:
         "learned": learned, "uniform": uniform, "lift": learned - uniform,
         "null_p95": p95, "null_mean": float(nulls.mean()),
         "null_p": float((nulls >= learned).mean()),
-        "beats_null": bool(learned > p95 and learned > uniform),
+        "beats_null": bool(learned > p95 and (learned - uniform) > 0.005),
         "best_curve": b_curve, "best_driver": b_driver, "best_power": b_power,
         "effective_n_ratio": effective_n(w) / len(w),
         "weights": w,
