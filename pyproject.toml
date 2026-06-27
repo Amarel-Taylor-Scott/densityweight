@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "densityweight"
+version = "0.1.0"
+description = "Sample weighting that corrects for redundancy / density — downweight near-duplicate rows in dense neighborhoods (weight ∝ 1/local_density) so a uniform fit isn't dominated by over-counted redundant samples. Effective-sample-size aware, held-out + null validated. numpy-only."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Amarel Taylor Scott" }]
+keywords = ["machine-learning", "sample-weighting", "density", "redundancy",
+            "effective-sample-size", "tabular", "kaggle"]
+dependencies = ["numpy>=1.21"]
+
+[project.scripts]
+densityweight = "densityweight.cli:main"
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools]
+packages = ["densityweight"]
